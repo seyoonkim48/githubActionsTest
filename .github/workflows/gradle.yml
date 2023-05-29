@@ -35,6 +35,9 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+    - name: Make zip file
+      run: zip -r ./practice-deploy.zip .
+      shell: bash
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
