@@ -35,8 +35,12 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
-    - name: echo .jar file
-      run: ls ./build/libs
+
+    - name: echo pwd
+      run: echo $(pwd)
+    - name : echo ls
+      run: echo $(ls)
+
     - name: Make zip file
       run: zip -r ./practice-deploy.zip .
       shell: bash
