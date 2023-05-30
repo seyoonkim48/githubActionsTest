@@ -35,20 +35,22 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+    - name: echo .jar file
+      run: ls ./build/libs
     - name: Make zip file
       run: zip -r ./practice-deploy.zip .
       shell: bash
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }} # 등록한 Github Secret이 자동으로 불려옵니다.
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # 등록한 Github Secret이 자동으로 불려옵니다.
-        aws-region: ap-northeast-2
-    - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./practice-deploy.zip s3://$S3_BUCKET_NAME/practice-deploy.zip
-    - name: Code Deploy
-      run: >
-        aws deploy create-deployment --application-name be-1-seyun
-        --deployment-config-name CodeDeployDefault.AllAtOnce
-        --deployment-group-name be-1-seyun-group
-        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=practice-deploy.zip
+#     - name: Configure AWS credentials
+#       uses: aws-actions/configure-aws-credentials@v1
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }} # 등록한 Github Secret이 자동으로 불려옵니다.
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # 등록한 Github Secret이 자동으로 불려옵니다.
+#         aws-region: ap-northeast-2
+#     - name: Upload to S3
+#       run: aws s3 cp --region ap-northeast-2 ./practice-deploy.zip s3://$S3_BUCKET_NAME/practice-deploy.zip
+#     - name: Code Deploy
+#       run: >
+#         aws deploy create-deployment --application-name be-1-seyun
+#         --deployment-config-name CodeDeployDefault.AllAtOnce
+#         --deployment-group-name be-1-seyun-group
+#         --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=practice-deploy.zip
