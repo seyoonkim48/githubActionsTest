@@ -41,7 +41,6 @@ jobs:
     - name: Make zip file
       run: cd ./build/libs ; \
           zip -r practice-deploy.zip ./practice-githubAction-deploy-0.0.1-SNAPSHOT.jar ; \
-          mv ./practice-deploy.zip ../../ ; \
           ls ../../
       shell: bash
     - name: Configure AWS credentials
