@@ -38,7 +38,7 @@ jobs:
     - name: Move to libs
       run: cd ./build/libs
     - name: echo pwd
-      run: cd ./build/libs | echo $(pwd)
+      run: cd ./build/libs ; echo $(pwd)
 
 #     - name: Make zip file
 #       run: zip -r practice-deploy.zip .
