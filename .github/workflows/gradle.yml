@@ -39,7 +39,7 @@ jobs:
     - name: Move to libs
       run: cd ./build/libs
     - name: Make zip file
-      run: zip -r practice-deploy.zip .
+      run: zip -r practice-deploy.zip ./build/libs
       shell: bash
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
